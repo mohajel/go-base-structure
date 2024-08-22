@@ -1,24 +1,35 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a sample server Petstore server.",
-        "title": "Swagger Example API",
+        "title": "Good-Food",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",
-            "url": "http://www.swagger.io/support",
-            "email": "support@swagger.io"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "url": "http://good-food/support",
+            "email": "good-food-support@gmail.com"
         },
         "version": "1.0"
     },
-    "host": "petstore.swagger.io:8338",
-    "basePath": "/v2",
+    "host": "localhost:8338",
     "paths": {
-        "/oik": {
+        "/": {
+            "get": {
+                "description": "HelloWorldHandler Description",
+                "consumes": [
+                    "application/json"
+                ],
+                "summary": "HelloWorldHandler Summary",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.HelloWorldResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/ok": {
             "get": {
                 "description": "get struct array by ID",
                 "consumes": [
@@ -57,6 +68,16 @@
                             "type": "string"
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "server.HelloWorldResp": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "string"
                 }
             }
         }

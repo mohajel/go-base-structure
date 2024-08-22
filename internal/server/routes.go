@@ -14,12 +14,11 @@ import (
 func (s *Server) RegisterRoutes() http.Handler {
 	r := gin.Default()
 
-	// r.GET("/", s.HelloWorldHandler)
+	r.GET("/", s.HelloWorldHandler)
 
 	// r.GET("/health", s.healthHandler)
 
-	r.GET("/oik", GetStructArrayByString)
-
+	r.GET("/ok", GetStructArrayByString)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
@@ -33,25 +32,26 @@ func (s *Server) RegisterRoutes() http.Handler {
 // @Param   offset     query    int     true        "Offset"
 // @Param   limit      query    int     true        "Limit"
 // @Success 200 {string} string	"ok"
-// @Router /oik [get]
+// @Router /ok [get]
 func GetStructArrayByString(c *gin.Context) {
 }
 
-// // @Summary Add a new pet to the store
-// // @Description get string by ID
-// // @Accept  json
-// // @Produce  jsonv2/testapi/get-struct-array-by-string/:some_id
-// // @Success 200 {string} string	"ok"
-// // @Failure 400 {object} map[string]string "We need ID!!"
-// // @Failure 404 {object} map[string]string"Can not find ID"
-// // @Router / [get]
+type HelloWorldResp struct {
+	Data string `json:"data"`
+}
 
-// func (s *Server) HelloWorldHandler(c *gin.Context) {
-// 	resp := make(map[string]string)
-// 	resp["message"] = "Hello World"
+// @Summary HelloWorldHandler Summary
+// @Description HelloWorldHandler Description
+// @Accept  json
+// @Success 200 {object} HelloWorldResp
+// @Router / [get]
+func (s *Server) HelloWorldHandler(c *gin.Context) {
+	// resp := make(map[string]string)
+	// resp["message"] = "Hello World"
+	resp := HelloWorldResp{Data: "Hello World"}
 
-// 	c.JSON(http.StatusOK, resp)
-// }
+	c.JSON(http.StatusOK, resp)
+}
 
 // func (s *Server) healthHandler(c *gin.Context) {
 // 	c.JSON(http.StatusOK, s.db.Health())

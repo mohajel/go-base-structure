@@ -7,21 +7,16 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-
-// @title Swagger Example API
+// @title Good-Food
 // @version 1.0
-// @description This is a sample server Petstore server.
+// @allout solutin for reservation managment
 // @termsOfService http://swagger.io/terms/
 
 // @contact.name API Support
-// @contact.url http://www.swagger.io/support
-// @contact.email support@swagger.io
+// @contact.url http://good-food/support
+// @contact.email good-food-support@gmail.com
 
-// @license.name Apache 2.0
-// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
-
-// @host petstore.swagger.io:8338
-// @BasePath /v2
+// @host localhost:8338
 func main() {
 
 	log.Infof("Starting App ...")

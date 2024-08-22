@@ -1,19 +1,31 @@
-basePath: /v2
-host: petstore.swagger.io:8338
+definitions:
+  server.HelloWorldResp:
+    properties:
+      data:
+        type: string
+    type: object
+host: localhost:8338
 info:
   contact:
-    email: support@swagger.io
+    email: good-food-support@gmail.com
     name: API Support
-    url: http://www.swagger.io/support
-  description: This is a sample server Petstore server.
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    url: http://good-food/support
   termsOfService: http://swagger.io/terms/
-  title: Swagger Example API
+  title: Good-Food
   version: "1.0"
 paths:
-  /oik:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: HelloWorldHandler Description
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.HelloWorldResp'
+      summary: HelloWorldHandler Summary
+  /ok:
     get:
       consumes:
       - application/json

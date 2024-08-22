@@ -12,19 +12,32 @@ const docTemplate = `{
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",
-            "url": "http://www.swagger.io/support",
-            "email": "support@swagger.io"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "url": "http://good-food/support",
+            "email": "good-food-support@gmail.com"
         },
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/oik": {
+        "/": {
+            "get": {
+                "description": "HelloWorldHandler Description",
+                "consumes": [
+                    "application/json"
+                ],
+                "summary": "HelloWorldHandler Summary",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/server.HelloWorldResp"
+                        }
+                    }
+                }
+            }
+        },
+        "/ok": {
             "get": {
                 "description": "get struct array by ID",
                 "consumes": [
@@ -66,17 +79,27 @@ const docTemplate = `{
                 }
             }
         }
+    },
+    "definitions": {
+        "server.HelloWorldResp": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "string"
+                }
+            }
+        }
     }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "petstore.swagger.io:8338",
-	BasePath:         "/v2",
+	Host:             "localhost:8338",
+	BasePath:         "",
 	Schemes:          []string{},
-	Title:            "Swagger Example API",
-	Description:      "This is a sample server Petstore server.",
+	Title:            "Good-Food",
+	Description:      "",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",
